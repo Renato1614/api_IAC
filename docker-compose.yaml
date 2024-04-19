@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "443:443"
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - minha-rede
+    volumes:
+      - ./certificados:/https   # Mapeando o diretório de certificados local para o contêiner
+
+  seq:
+    image: datalust/seq:latest
+    ports:
+      - "5341:5341"  # Porta padrão do Seq
+      - "80:80"  # Porta padrão do Seq
+    networks:
+      - minha-rede  
+    environment:
+      - ACCEPT_EULA=Y
+networks:
+  minha-rede:
