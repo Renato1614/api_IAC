@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                bat "dotnet restore ${workspace}\\api.sln"
             }
         }
         stage('Test') {
