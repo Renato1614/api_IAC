@@ -7,7 +7,7 @@ pipeline {
                 dotnet clean 
             }
         }
-        tage('Restore') {
+        stage('Restore') {
             steps {
                 dotnet restore
             }
