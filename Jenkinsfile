@@ -2,9 +2,19 @@ pipeline {
     agent any
 
     stages {
+        stage('Clean'){
+            steps{
+                dotnet clean 
+            }
+        }
+        tage('Restore') {
+            steps {
+                dotnet restore
+            }
+        }
         stage('Build') {
             steps {
-                bat "msbuild.exe restore ${workspace}\\api.sln"
+                dotnet build
             }
         }
         stage('Test') {
