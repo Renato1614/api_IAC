@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat "dotnet restore ${workspace}\\api.sln"
+                bat "msbuild.exe restore ${workspace}\\api.sln"
             }
         }
         stage('Test') {
